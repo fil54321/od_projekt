@@ -1,0 +1,47 @@
+
+
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="text-center p-2 h4" style="margin-top: 3cm; background: white; font-size: 35px; font-weight: bold;">Register</div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+                {% from "macro.html" import render_field %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class=flashes>
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+      </div>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+    <form action="" method="post">
+        {{ form.csrf_token }}
+
+            <div class="form-group" style="margin-top: 2cm; margin-left: 15cm;">
+
+                {{ render_field(form.username,class="form-control bottom-line-input custom-search-input", placeholder="Username", style="margin-bottom: 18px;
+        width: 10cm;")}}
+                {{ render_field(form.password, class="form-control bottom-line-input custom-search-input", placeholder="Password",style="margin-bottom: 18px;
+        width: 10cm;")}}
+
+
+
+            </div>
+        {{ form.submit(class="", style="margin-left: 15cm; margin-top: 0.5cm; background: black; width: 10cm; height: 1.35cm; color: white; font-size: 25px;") }}
+
+
+    </form>
+</div>
+
+
+{% endblock content %}

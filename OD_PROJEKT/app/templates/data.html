@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+
+
+<form method="post" action="{{ url_for('before_data') }}">
+    {{ form.csrf_token }}
+    <button type="submit" class="btn btn-primary" name="action" value="show">Show data</button>
+    <button type="submit" class="btn btn-primary" name="action" value="hide">Hida data</button>
+</form>
+
+{% if show_data %}
+    <div id="encryptedData">
+        <p><strong>Decrypted Card Data:</strong> {{ decrypted_card_data }}</p>
+        <p><strong>Decrypted ID Data:</strong> {{ decrypted_id_data }}</p>
+    </div>
+{% endif %}
+
+
+
+{% endblock %}

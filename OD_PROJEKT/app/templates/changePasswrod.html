@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class=flashes>
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+      </div>
+  {% endif %}
+{% endwith %}
+
+{% from "macro.html" import render_field %}
+<form action="" method="post">
+        {{ form.csrf_token }}
+
+            <div class="form-group" style="margin-top: 2cm; margin-left: 15cm;">
+
+                {{ render_field(form.current_password,class="form-control ", placeholder="Current password", style="margin-bottom: 18px;
+        width: 10cm;")}}
+                {{ render_field(form.new_password, class="form-control", placeholder="New password",style="margin-bottom: 18px;
+        width: 10cm;")}}
+                {{ render_field(form.confirm_password, class="form-control", placeholder="Repeat new password",style="margin-bottom: 18px;
+        width: 10cm;")}}
+
+
+
+            </div>
+        {{ form.submit(class="", style="margin-left: 15cm; margin-top: 0.5cm; background: black; width: 10cm; height: 1.35cm; color: white; font-size: 25px;") }}
+
+
+    </form>
+
+
+
+{% endblock %}

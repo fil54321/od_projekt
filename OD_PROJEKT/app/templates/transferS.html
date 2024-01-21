@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+  {% include 'navbar.html' %}
+
+<div style="margin-left: 5cm; margin-top: 2cm;">
+   <h2>Sent</h2>
+  <ul>
+    {% for tr in sent %}
+      <li>
+        Amount: {{ tr.transfer.amount }},
+        Title: {{ tr.transfer.title }},
+        Recipient: {{ tr.recipient.username }},
+        Recipient Account Number: {{ tr.recipient.account_number }}
+      </li>
+    {% endfor %}
+  </ul>
+  <br>
+  <h2>Received</h2>
+  <ul>
+    {% for tr in received %}
+      <li>
+        Amount: {{ tr.transfer.amount }},
+        Title: {{ tr.transfer.title }},
+        Sender: {{ tr.sender.username }},
+        Sender Account Number: {{ tr.sender.account_number }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+</div>
